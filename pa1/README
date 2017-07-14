@@ -1,0 +1,13 @@
+====================================================================
+README : Program 1. Submitted by Elijah Cordova, Student ID 1425119
+====================================================================
+
+//Lex.java
+
+-Reads input file and stores into a string array
+-Determines the lexical order of the string array and implements the List ADT to store the order
+-Prints out the sorted input to a specified output file
+
+//List.java
+
+-Where the List ADT and all its functions reside

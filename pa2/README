@@ -1,0 +1,17 @@
+====================================================================
+README : Program 2. Submitted by Elijah Cordova, Student ID 1425119
+====================================================================
+
+//Lex.c
+
+-Reads input file and stores into a string array
+-Determines the lexical order of the string array and implements the List ADT to store the order
+-Prints out the sorted input to a specified output file
+
+//Lex.h
+
+Header file for Lex.c
+
+//List.c
+
+-Where the List ADT and all its functions reside
