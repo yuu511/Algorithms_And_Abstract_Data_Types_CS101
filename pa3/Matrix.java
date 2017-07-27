@@ -129,6 +129,8 @@ class Matrix{
   		System.exit(1);
   	}
   	Matrix add=new Matrix(getSize());
+    if (this==M)
+      return this.copy().scalarMult(2);
   	for (int i=1;i<=getSize();i++){
   		add.rows[i]= addFunc (rows[i],M.rows[i]);
   	}
@@ -199,9 +201,8 @@ class Matrix{
 
   Matrix mult(Matrix N){
   	if(getSize() != N.getSize()){
-  		System.out.print ("mult error.");
-  		System.exit(1);
-  	}
+  		throw new RuntimeException("mult error.");
+    }
   	Matrix mMatrix = new Matrix (getSize());
   	Matrix nT = N.transpose();
   	for (int i=1; i<= getSize(); i++){
@@ -218,7 +219,7 @@ class Matrix{
   	double toReturn = 0.0;
   	N.moveFront();
   	M.moveFront();
-  	while(N.index()>=0 || M.index() >=0){
+  	while(N.index()>=0 && M.index() >=0){
   		Entry one = (Entry) N.get();
   	    Entry two = (Entry) M.get();
   	    if (one.column > two.column) {
@@ -250,4 +251,17 @@ class Matrix{
     }
     return matrixS;
   }
+
+  public boolean equals(Object subject){
+    boolean equals=true;
+    Matrix m = (Matrix) subject;
+    equals= (this.getSize()==m.getSize());
+    for (int i=1; i<=getSize();i++){
+      if (!((rows[i].equals(m.rows[i])))&&(this.getNNZ()!=m.getNNZ())){
+        equals=false;
+      }
+    }
+    return equals;
+  }
+
 }
