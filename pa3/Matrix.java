@@ -1,4 +1,11 @@
+//Elijah Cordova
+//ejcordov
+//pa3
+//Matrix.java
+
+//Implementation file for the Matrix ADT
 class Matrix{
+  //The "node" of the Matrix class
   private class Entry{
   	int column;
   	double data;
@@ -26,7 +33,8 @@ class Matrix{
   }
   
   List[] rows;
-
+  
+  //creates empty matrix
   Matrix (int n){
   	if (n>=1){
       rows= new List [n+1];
@@ -35,11 +43,13 @@ class Matrix{
       }
   	}
   }
-
+  
+  //returns size
   int getSize(){
     return rows.length-1;
   }
-
+  
+  //returns non zero integers
   int getNNZ(){
   	int toReturn=0;
   	for (int i=1;i<=getSize();i++){
@@ -47,13 +57,29 @@ class Matrix{
   	}
   	return toReturn;
   }
-
+  
+  //override for object equals method, compares two matrix objects.
+  public boolean equals(Object subject){
+    boolean equals=true;
+    Matrix m = (Matrix) subject;
+    equals= (this.getSize()==m.getSize());
+    for (int i=1; i<=getSize();i++){
+      if (!((rows[i].equals(m.rows[i])))&&(this.getNNZ()!=m.getNNZ())){
+        equals=false;
+      }
+    }
+    return equals;
+  }
+  
+  //setsmatrix to zero state
   void makeZero(){
   	for (int i=1;i<=getSize();i++){
   		rows[i]=new List();
   	}
   }
-
+  
+  //copies a matrix
+  //pre: size >=1
   Matrix copy(){
     Matrix copy= new Matrix(rows.length-1);
     for (int i=1;i<=getSize();i++){
@@ -66,7 +92,8 @@ class Matrix{
     }
     return copy;
   }
-
+  
+  //changes ith row, jth column to specified double value
   void changeEntry (int row, int col, double x){
     if (row<1 || col<1 || row>getSize() || col>getSize()){
         System.out.print("invalid changeEntry request");
@@ -92,13 +119,15 @@ class Matrix{
     //new insert
     if (x!=0.0 && overWrite==false){
       rows[row].moveFront();
+      //non-populated list
       if (rows[row].length()==0){
       	rows[row].append(new Entry(col,x));
       	return;
-      } else{
+      } else {
       	rows[row].moveFront();
       	while (rows[row].index()>=0){
       	  Entry test = (Entry) rows[row].get();
+          //list will iterate until it finds the appropriate place
           if (test.column>col){
           	rows[row].insertBefore(new Entry (col,x));
           	return;
@@ -109,7 +138,9 @@ class Matrix{
       }	
     }
   }
-
+ 
+ //pre: size of Matrix must be the smae
+ //returns a scaled matrix
   Matrix scalarMult (double x){
     Matrix toReturn = new Matrix(getSize());
     for (int i=1;i<=getSize();i++){
@@ -122,7 +153,9 @@ class Matrix{
     }
     return toReturn;
   }
-
+  
+  //pre: sizes of the matrices must be the same
+  //Adds two matrices together
   Matrix add (Matrix M){
   	if (getSize()!=M.getSize()){
   		System.out.print ("Invalid matrix size for add.");
@@ -136,7 +169,9 @@ class Matrix{
   	}
   	return add;
   }
-
+  
+  //Helper function to add,
+  //uses a stack like process to add matrix members together.
   List addFunc (List N, List M){
     List toReturn = new List();
     N.moveFront();
@@ -145,6 +180,7 @@ class Matrix{
     	if(N.index() >= 0 && M.index() >= 0) {
 			Entry one = (Entry) N.get();
 			Entry two = (Entry) M.get();
+      //four seperate cases for when indexes are still within bounds
 			if (one.column > two.column){
 				toReturn.append(new Entry(two.column,two.data));
 				M.moveNext();
@@ -160,6 +196,7 @@ class Matrix{
 				M.moveNext();
 			  }
 			} 
+    //2 cases to deal with leftovers
 		else if (N.index() >= 0 && M.index() <=0) {
 			Entry one = (Entry) N.get();
 			toReturn.append (new Entry(one.column,one.data));
@@ -172,7 +209,8 @@ class Matrix{
     }   
     return toReturn; 
   }
-
+ 
+  //essentially the add function, except the second member is scaled by -1 to "subtract"
   Matrix sub (Matrix M){
   	if (getSize()!=M.getSize()){
   		System.out.print ("Invalid matrix size for add.");
@@ -185,7 +223,8 @@ class Matrix{
   	}
   	return sub;
   }
-
+ 
+ //transposes specified matrix A
   Matrix transpose(){
   	Matrix tMatrix= new Matrix(getSize()); 	
     for (int i=1;i<=getSize();i++){
@@ -198,7 +237,9 @@ class Matrix{
     }
     return tMatrix;
   }
-
+  
+  //pre: sizes of matrices must be the same
+  //multiplies two matrices
   Matrix mult(Matrix N){
   	if(getSize() != N.getSize()){
   		throw new RuntimeException("mult error.");
@@ -214,7 +255,8 @@ class Matrix{
     }
     return mMatrix;
   }
-
+  
+  //helper function for mult
   double dot (List N, List M){
   	double toReturn = 0.0;
   	N.moveFront();
@@ -234,7 +276,8 @@ class Matrix{
   	}
   	return toReturn;
   }
-
+   
+  //method to override objects (toString()) method
   public String toString(){
     String matrixS = "";
     for (int i=1;i<=getSize();i++){
@@ -252,16 +295,6 @@ class Matrix{
     return matrixS;
   }
 
-  public boolean equals(Object subject){
-    boolean equals=true;
-    Matrix m = (Matrix) subject;
-    equals= (this.getSize()==m.getSize());
-    for (int i=1; i<=getSize();i++){
-      if (!((rows[i].equals(m.rows[i])))&&(this.getNNZ()!=m.getNNZ())){
-        equals=false;
-      }
-    }
-    return equals;
-  }
+
 
 }

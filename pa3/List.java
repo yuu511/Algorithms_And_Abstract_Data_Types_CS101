@@ -1,3 +1,9 @@
+//Elijah Cordova
+//ejcordov
+//pa3
+//List.java
+
+
 class List{
     
   private class Node{
@@ -18,6 +24,7 @@ class List{
 
 //pointers to the front and back elements of list, and a cursor
 //int to store size of list and index of cursor.
+//
 private Node cursor;
 private Node front;
 private Node back;

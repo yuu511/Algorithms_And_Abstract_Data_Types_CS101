@@ -1,3 +1,11 @@
+//Elijah Cordova
+//ejcordov
+//pa3
+//ListTest.java
+
+
+//Sample test file for the List ADT.
+//Expected results below.
 class ListTest{
   public static void main (String[] args){
     List A= new List();

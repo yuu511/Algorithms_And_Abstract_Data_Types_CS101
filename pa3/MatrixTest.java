@@ -1,3 +1,10 @@
+//Elijah Cordova
+//ejcordov
+//pa3
+//MatrixTest.java
+
+//Small test module to check to test the various functions of Matrix.
+//Expected results below.
 class MatrixTest{
   public static void main (String[] args){
   	Matrix a= new Matrix (5);

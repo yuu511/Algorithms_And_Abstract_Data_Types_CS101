@@ -1,9 +1,30 @@
-README:
+=======================================================================================
+README : Program 3. Submitted by Elijah Cordova, Student ID 1425119, CRUZID ejcordov
+=======================================================================================
 
-Sparse.java
-Matrix.java
-List.java
-MatrixTest.java
-ListTest.java
-Makefile
-README
+Sparse.java:
+Main client of the program.
+Reads input file, and interprets the inputs as a matrix.
+Calls upon the list adt and matrix adt and its functions to preform various operations.
+
+List.java:
+Implementation file for the List ADT.
+Has List and it's functions.
+
+Matrix.java:
+Implementation file for the Matrix ADT.
+Has Matrix and it's functions.
+
+ListTest.java:
+Small test module for List.
+Sees to check if all functions and the ADT are working properly.
+
+MatrixTest.java:
+Small test module for Matrix.
+Sees to check if all functions and the ADT are working properly.
+
+Makefile:
+Makefile for list, which creates an appropriate .jar file
+
+README: 
+details files

@@ -1,10 +1,18 @@
+//Elijah Cordova
+//ejcordov
+//pa3
+//Sparse.java
+
+//The main client of the program.
 import java.io.*;
 import java.util.*;
 import java.lang.Object;
-class Sparse{
-    
 
-public static BufferedWriter writer;
+class Sparse{ 
+    public static BufferedWriter writer;
+    
+    //Pre: name of input file to be interpreted
+    //preformoperations() reads input from the text file. interprets it, and creates the appropriate matrices.
 	public static void performOperations(String input) throws IOException{
 		int matrixA;
 		int matrixB;
@@ -30,9 +38,14 @@ public static BufferedWriter writer;
               B.changeEntry(Integer.parseInt(token[0]),Integer.parseInt(token[1]),Double.parseDouble(token[2]));
 			}
 		}
+
+		//send out the matrices to be operated and shown off
 		printOut(A,B);
 	}
-
+    
+    //Pre: 2 Matrices : Matrix A, Matrix B
+    //Do operations involving these matrices
+    //Print out the results in the file specified previously.
 	public static void printOut (Matrix A, Matrix B){
         try{
         	writer.write("A has "+ A.getNNZ() + " non-zero entries:\n");
