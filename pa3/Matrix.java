@@ -66,6 +66,7 @@ class Matrix{
     for (int i=1; i<=getSize();i++){
       if (!((rows[i].equals(m.rows[i])))&&(this.getNNZ()!=m.getNNZ())){
         equals=false;
+        return equals;
       }
     }
     return equals;
@@ -242,7 +243,8 @@ class Matrix{
   //multiplies two matrices
   Matrix mult(Matrix N){
   	if(getSize() != N.getSize()){
-  		throw new RuntimeException("mult error.");
+  		System.out.print ("mult error.");
+  		System.exit(1);
     }
   	Matrix mMatrix = new Matrix (getSize());
   	Matrix nT = N.transpose();
