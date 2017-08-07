@@ -16,6 +16,9 @@ typedef struct GraphObj{
 	char* color;
 }GraphObj;
 
+// newGraph(int n);
+// pre: n>0
+// post: creates new graph with Order n
 Graph newGraph(int n){
 	  Graph G = calloc(1,sizeof(GraphObj));
 	  G -> matrix = calloc (n+1,sizeof(List));
@@ -34,6 +37,9 @@ Graph newGraph(int n){
 	  return G;
 }
 
+// freeGraph(Graph* pG)
+// pre: graph must not be null
+// post: frees all memory associated with specified graph
 void freeGraph(Graph* pG){
 	if (pG!=NULL && *pG!=NULL){
 		for (int i=1;i<=getOrder(*pG);i++){
@@ -48,6 +54,9 @@ void freeGraph(Graph* pG){
 	}
 }
 
+// getOrdeR(Graph G)
+// pre: G must not be null
+// post: returns order of graph G.
 int getOrder(Graph G){
 	if (G == NULL ){
 		printf ("G CALLED ON NULL GRAPH.");
@@ -56,6 +65,9 @@ int getOrder(Graph G){
 	return G->order;
 }
 
+// getSize(Graph G)
+// pre: G must not be null
+// post: returns size of graph G (# of edges)
 int getSize(Graph G){
 	if (G == NULL ){
 		printf ("G CALLED ON NULL GRAPH.");
@@ -64,6 +76,9 @@ int getSize(Graph G){
 	return G->size;
 }
 
+// getSource (Graph G)
+// pre: G must not be null, G must have BFS performed on it
+// post: returns the source of BFS on graph G
 int getSource (Graph G){
 	if (G == NULL ){
 		printf ("G CALLED ON NULL GRAPH.");
@@ -72,6 +87,9 @@ int getSource (Graph G){
 	return G->source;
 }
 
+// getParent(Graph G, int u);
+// pre: G must not be null, u must be an existing vertice in the graph, G must have BFS performed on it
+// post: returns parent of specified vertice u based on the last BFS
 int getParent (Graph G,int u){
 	if (G == NULL ){
 		printf ("G CALLED ON NULL GRAPH.");
@@ -82,6 +100,10 @@ int getParent (Graph G,int u){
     }
 	return G->parent[u];
 }
+
+//  GetDist(Graph G, int u)
+// pre: G must not be null, u must be an existing vertice on the graph, G must have BFS performed on it
+// post: returns distance of vertice u from the source of the last BFS
 
 int getDist (Graph G,int u){
 	if (G == NULL ){
@@ -94,6 +116,9 @@ int getDist (Graph G,int u){
 	return G->distance[u];
 }
 
+// getPath( List L, graph G, int u)
+// pre: G must not be null, u must be an existing vertice on the graph, G must have BFS performed on it
+// post: finds shortest path of vertice u from source and writes it in a list (Based on last BFS)
 void getPath(List L, Graph G, int u){
 	if (G == NULL ){
 		printf ("G CALLED ON NULL GRAPH.");
@@ -115,6 +140,10 @@ void getPath(List L, Graph G, int u){
     }
 }
 
+// makeNull (Graph G)
+//pre:
+//post: removes all edges from matrix G
+
 void makeNull(Graph G){
 	for (int i=1;i<=getOrder(G);i++){
       clear(G->matrix[i]);
@@ -126,6 +155,9 @@ void makeNull(Graph G){
 	G->source=NIL;
 }
 
+// addArc(Graph G,int u,int v)
+// pre: G is not null, u and v are valid vertices within G
+// post: adds directed edge from u to v
 void addArc(Graph G, int u, int v){
   if (u<1 || u>getOrder(G)){
   	printf ("Invalid parameters for u!");
@@ -158,6 +190,9 @@ void addArc(Graph G, int u, int v){
   }
 }
 
+// addEdge(Graph G,int u,int v)
+// pre: G is not null, u and v are valid vertices within G
+// post: adds undirected edge from u to v
 void addEdge(Graph G, int u, int v){
   if (u<1 || u>getOrder(G)){
   	printf ("Invalid parameters for u!");
@@ -172,6 +207,9 @@ void addEdge(Graph G, int u, int v){
   G->size--;
 }
 
+// BFS(Graph G, int s)
+// pre: G is not null, s is a valid vertice in graph G
+// post: performs Breadth first search in graph G with source s.
 void BFS (Graph G, int s){
   int current;
   if (G ==NULL){
@@ -212,7 +250,9 @@ void BFS (Graph G, int s){
   freeList(&Queue);
 }
 
-
+// PrintGraph (file * out , graph G)
+// pre: 
+// post: prints out graph to specified file
 void printGraph(FILE* out, Graph G){
   for (int i=1;i<=getOrder(G);i++){
   	fprintf(out,"%d: ",i);

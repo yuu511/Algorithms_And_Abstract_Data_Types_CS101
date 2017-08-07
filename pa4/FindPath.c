@@ -14,8 +14,6 @@ FILE *in, *out;
  // main()
  // pre:
  // post: reads file input, and performs approproiate operations
- 
-
 int main(int argc, char *argv[]){
   if (argc!=3){
   	printf("Usage : %s <input file> <output file>",argv[0]);
@@ -40,25 +38,28 @@ int main(int argc, char *argv[]){
   //scans the 1st line : Graph Order
   fscanf (in,"%d",&input1);
   Graph G= newGraph(input1);
-  //Scans the next set of lines :Graph Vertices
+  //Scans the next set of lines :Graph Vertices, terminates when line1 and line2=0
   while(fscanf (in,"%d %d",&input1,&input2) != EOF && (input1 != 0 && input2 !=0)){
     addEdge(G,input1,input2);
   }
   printGraph(out,G);
-  //Scans the next set of lines : Graph Queries
+  fprintf(out,"\n");
+  //Scans the next set of lines :Graph Queries: find shortest path from (in1->in2) using BFS, terminates when line1 and line2=0
   while(fscanf (in,"%d %d",&input1,&input2) != EOF && (input1 != 0 && input2 !=0)){
-  	 fprintf(out,"\n");
      List L=newList();
      BFS(G,input1);
      getPath(L,G,input2);
      if (getDist(G,input2)!=INF){
      	fprintf(out,"The distance from %d to %d is %d\n",input1,input2,getDist(G,input2));
-        fprintf(out,"The shortest %d-%d path is:",input1,input2);
+        fprintf(out,"The shortest %d-%d path is: ",input1,input2);
         printList(out,L);
-         } else{
+        fprintf(out,"\n");
+     } else{
         fprintf(out,"The distance from %d to %d is infinity\n",input1,input2);
         fprintf(out,"No %d-%d path exists",input1,input2);	
+        fprintf(out,"\n");
      }
+        fprintf(out,"\n");
         freeList(&L);
   }
   freeGraph(&G);
