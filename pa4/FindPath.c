@@ -51,7 +51,7 @@ int main(int argc, char *argv[]){
      getPath(L,G,input2);
      if (getDist(G,input2)!=INF){
      	fprintf(out,"The distance from %d to %d is %d\n",input1,input2,getDist(G,input2));
-        fprintf(out,"The shortest %d-%d path is: ",input1,input2);
+        fprintf(out,"A shortest %d-%d path is: ",input1,input2);
         printList(out,L);
         fprintf(out,"\n");
      } else{
