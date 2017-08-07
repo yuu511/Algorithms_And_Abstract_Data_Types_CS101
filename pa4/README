@@ -1,0 +1,23 @@
+README : Program 4. 
+Submitted by Elijah Cordova, Student ID 1425119, CRUZID ejcordov
+
+List.c: 
+Implementation of the List ADT
+
+List.h:
+Header file for List.c
+
+Graph.c:
+Implementation of the Graph ADT
+
+Graph.h:
+Header file for Graph
+
+FindPath.c:
+Main client for the program: reads input and performs operations
+
+Makefile:
+Makefile for program, compiles and makes runnable executable.
+
+README:
+Lists files and has a brief description of their functions.
