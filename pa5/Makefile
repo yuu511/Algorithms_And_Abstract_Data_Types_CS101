@@ -38,7 +38,7 @@ $(BASE_OBJECTS) : $(BASE_SOURCES) $(HEADERS)
 	$(COMPILE) $(BASE_SOURCES)
 
 clean :
-	$(REMOVE) FindComponents GraphTest GraphClient FindComponents.o GraphClient.o $(BASE_OBJECTS) 
+	$(REMOVE) FindComponents GraphTest GraphClient FindComponents.o GraphClient.o GraphTest.o $(BASE_OBJECTS) 
 
 checkFind : FindComponents
 	$(MEMCHECK) FindComponents in3 junk3
