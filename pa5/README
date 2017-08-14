@@ -1,0 +1,26 @@
+README : Program 5. 
+Submitted by Elijah Cordova, Student ID 1425119, CRUZID ejcordov
+
+List.c: 
+Implementation of the List ADT
+
+List.h:
+Header file for List.c
+
+Graph.c:
+Implementation of the Graph ADT
+
+Graph.h:
+Header file for Graph
+
+GraphTest.c:
+Test program for the Graph ADT. Run "make GraphTest" or Compile with List.c and Graph .c, run with one command line argument to specify output file (./(executable) <output file>)
+
+FindComponents.c:
+Main client for the program: reads input and performs DFS operations
+
+Makefile:
+Makefile for program, compiles and makes runnable executable.
+
+README:
+Lists files and has a brief description of their functions.
