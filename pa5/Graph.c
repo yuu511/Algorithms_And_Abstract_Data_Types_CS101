@@ -31,6 +31,8 @@ Graph newGraph(int n){
 	  for (int i=1;i<=n;i++){
 	  G->matrix[i]=newList();
 	  G->parent[i]=NIL;
+    G->discover[i]=UNDEF;
+    G->finish[i]=UNDEF;
 	  G->color[i]='W';
 	  }
 	  return G;
@@ -46,11 +48,11 @@ void freeGraph(Graph* pG){
 		}
 	  free((*pG)->matrix);	
 	  free((*pG)->parent);
-      free((*pG)->discover);
-      free((*pG)->finish);
-      free((*pG)->color);
+    free((*pG)->discover);
+    free((*pG)->finish);
+    free((*pG)->color);
 	  free(*pG);
-      *pG=NULL;
+    *pG=NULL;
 	}
 }
 
@@ -205,6 +207,8 @@ void DFS(Graph G, List S){
   for (int i=1;i<=getOrder(G);i++){
 	 G->parent[i]=NIL;
 	 G->color[i]='W';
+   G->discover[i]=UNDEF;
+   G->finish[i]=UNDEF;
   }
   int time =0;
   moveBack(S);
