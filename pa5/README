@@ -8,7 +8,7 @@ List.h:
 Header file for List.c
 
 Graph.c:
-Implementation of the Graph ADT
+Implementation of the Graph ADT , With DFS functions
 
 Graph.h:
 Header file for Graph
