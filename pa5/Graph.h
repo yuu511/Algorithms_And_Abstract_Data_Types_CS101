@@ -7,7 +7,7 @@
 #define _GRAPH_H_INCLUDE_
 #include <stdio.h>
 #include "List.h"
-#define INF -2
+#define UNDEF -2
 #define NIL -3
 
 
